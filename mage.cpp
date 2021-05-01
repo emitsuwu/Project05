@@ -14,6 +14,11 @@ void Mage::Fireball(Entity *target)
     Attack(target, GetIntelligence() * 1.5, "Fireball");
 }
 
+void Mage::Pyroblast(Entity *target)
+{
+    Attack(target, GetIntelligence() * 3.0, "Pyroblast");
+}
+
 void Mage::MagicMissiles(Entity *target)
 {
     Attack(target, GetIntelligence() * 0.5, "Magic Missile");
@@ -51,6 +56,11 @@ void Mage::UseAction(Entity * target, const std::string& spellName, const std::s
     if(spellName == "magic_missile")
     {
         MagicMissiles(target);
+        return;
+    }
+    if(spellName == "pyroblast")
+    {
+        Pyroblast(target);
         return;
     }
     errorFindingAbility(spellName);
