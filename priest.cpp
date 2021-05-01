@@ -13,6 +13,10 @@ void Priest::Smite(Entity * target)
     Attack(target, GetWisdom() * 0.5, "Smite");
 }
 
+void Priest::FlashHeal(Entity * target)
+{
+    Heal(target, GetWisdom() * 1.5, "Flash Heal");
+}
 
 void Priest::GreaterHeal(Entity *target)
 {
@@ -50,6 +54,11 @@ void Priest::UseAction(Entity * target, const std::string& spellName, const std:
     if(spellName == "greater_heal")
     {
         GreaterHeal(target);
+        return;
+    }
+    if(spellName == "flash_heal")
+    {
+        FlashHeal(target);
         return;
     }
     errorFindingAbility(spellName);
